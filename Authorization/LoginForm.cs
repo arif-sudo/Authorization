@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -67,6 +68,32 @@ namespace Authorization
                 this.Left += e.X - lastPoint.X;
                 this.Top += e.Y - lastPoint.Y;
             }
+        }
+
+        private void loginButton_Click(object sender, EventArgs e)
+        {
+            String userLogin = loginField.Text;
+            String userPassword = passField.Text;
+
+            Database db = new Database();
+            DataTable table = new DataTable();
+            MySqlDataAdapter adapter = new MySqlDataAdapter();
+
+            MySqlCommand command = new MySqlCommand("SELECT * FROM `users`  WHERE `login` = @ul AND `pass` = @up", db.getConnection());
+            command.Parameters.Add("@ul", MySqlDbType.VarChar).Value = userLogin;
+            command.Parameters.Add("@up", MySqlDbType.VarChar).Value = userPassword;
+
+            adapter.SelectCommand = command;
+            adapter.Fill(table);
+
+            if (table.Rows.Count > 0)
+            {
+                MessageBox.Show("Yes");
+            }else
+            {
+                MessageBox.Show("No");
+            }
+
         }
     }
 }
