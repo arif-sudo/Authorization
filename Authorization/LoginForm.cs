@@ -30,6 +30,7 @@ namespace Authorization
         private void close_Click(object sender, EventArgs e)
         {
             this.Close();
+            Application.Exit();
         }
 
         private void close_MouseEnter(object sender, EventArgs e)
@@ -88,12 +89,21 @@ namespace Authorization
 
             if (table.Rows.Count > 0)
             {
-                MessageBox.Show("Yes");
+                this.Hide();
+                MainForm mainForm = new MainForm();
+                mainForm.ShowDialog();
             }else
             {
                 MessageBox.Show("No");
             }
 
+        }
+
+        private void label2_Click_1(object sender, EventArgs e)
+        {
+            this.Hide();
+            RegisterForm registerForm = new RegisterForm();
+            registerForm.ShowDialog();
         }
     }
 }

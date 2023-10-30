@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.userSurnameField = new System.Windows.Forms.TextBox();
+            this.usernameField = new System.Windows.Forms.TextBox();
             this.registerButton = new System.Windows.Forms.Button();
             this.passField = new System.Windows.Forms.TextBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
@@ -37,8 +39,7 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.close = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.usernameField = new System.Windows.Forms.TextBox();
-            this.userSurnameField = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -48,6 +49,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.SteelBlue;
+            this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.userSurnameField);
             this.panel1.Controls.Add(this.usernameField);
             this.panel1.Controls.Add(this.registerButton);
@@ -64,13 +66,35 @@
             this.panel1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseDown);
             this.panel1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseMove);
             // 
+            // userSurnameField
+            // 
+            this.userSurnameField.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.userSurnameField.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.userSurnameField.Location = new System.Drawing.Point(496, 159);
+            this.userSurnameField.Name = "userSurnameField";
+            this.userSurnameField.Size = new System.Drawing.Size(276, 34);
+            this.userSurnameField.TabIndex = 7;
+            this.userSurnameField.Enter += new System.EventHandler(this.userSurnameField_Enter);
+            this.userSurnameField.Leave += new System.EventHandler(this.userSurnameField_Leave);
+            // 
+            // usernameField
+            // 
+            this.usernameField.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.usernameField.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.usernameField.Location = new System.Drawing.Point(94, 159);
+            this.usernameField.Name = "usernameField";
+            this.usernameField.Size = new System.Drawing.Size(276, 34);
+            this.usernameField.TabIndex = 6;
+            this.usernameField.Enter += new System.EventHandler(this.usernameField_Enter);
+            this.usernameField.Leave += new System.EventHandler(this.usernameField_Leave);
+            // 
             // registerButton
             // 
             this.registerButton.AutoSize = true;
             this.registerButton.Cursor = System.Windows.Forms.Cursors.Hand;
             this.registerButton.FlatAppearance.BorderSize = 0;
             this.registerButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.registerButton.Location = new System.Drawing.Point(257, 348);
+            this.registerButton.Location = new System.Drawing.Point(255, 328);
             this.registerButton.Name = "registerButton";
             this.registerButton.Size = new System.Drawing.Size(296, 48);
             this.registerButton.TabIndex = 5;
@@ -161,27 +185,16 @@
             this.label1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.label1_MouseDown);
             this.label1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.label1_MouseMove);
             // 
-            // usernameField
+            // label2
             // 
-            this.usernameField.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.usernameField.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.usernameField.Location = new System.Drawing.Point(94, 159);
-            this.usernameField.Name = "usernameField";
-            this.usernameField.Size = new System.Drawing.Size(276, 34);
-            this.usernameField.TabIndex = 6;
-            this.usernameField.Enter += new System.EventHandler(this.usernameField_Enter);
-            this.usernameField.Leave += new System.EventHandler(this.usernameField_Leave);
-            // 
-            // userSurnameField
-            // 
-            this.userSurnameField.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.userSurnameField.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.userSurnameField.Location = new System.Drawing.Point(496, 159);
-            this.userSurnameField.Name = "userSurnameField";
-            this.userSurnameField.Size = new System.Drawing.Size(276, 34);
-            this.userSurnameField.TabIndex = 7;
-            this.userSurnameField.Enter += new System.EventHandler(this.userSurnameField_Enter);
-            this.userSurnameField.Leave += new System.EventHandler(this.userSurnameField_Leave);
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(310, 398);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(195, 19);
+            this.label2.TabIndex = 8;
+            this.label2.Text = "Already have an account?";
+            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // RegisterForm
             // 
@@ -215,5 +228,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox userSurnameField;
         private System.Windows.Forms.TextBox usernameField;
+        private System.Windows.Forms.Label label2;
     }
 }

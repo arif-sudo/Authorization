@@ -42,7 +42,7 @@ namespace Authorization
 
         private void close_Click(object sender, EventArgs e)
         {
-            this.Close();
+            Application.Exit();
         }
         Point lastPoint;
         private void panel1_MouseDown(object sender, MouseEventArgs e)
@@ -184,6 +184,9 @@ namespace Authorization
 
             if (isUserExists())
             {
+                this.Hide();
+                LoginForm loginForm = new LoginForm();
+                loginForm.ShowDialog();
                 return;
             }
             
@@ -197,7 +200,10 @@ namespace Authorization
             db.openConnect();
             if (cmd.ExecuteNonQuery() == 1)
             {
-                MessageBox.Show("Account has been created");
+                //MessageBox.Show("Account has been created");
+                this.Hide();
+                MainForm mainForm = new MainForm();
+                mainForm.ShowDialog();
             }else
             {
                 MessageBox.Show("Account was not craeted");
@@ -219,13 +225,20 @@ namespace Authorization
 
             if (table.Rows.Count > 0)
             {
-                MessageBox.Show("User login already exists");
+                //MessageBox.Show("User login already exists");
                 return true;
             }
             else
             {
                 return false;
             }
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            LoginForm loginForm = new LoginForm();
+            loginForm.ShowDialog();
         }
     }
 }
