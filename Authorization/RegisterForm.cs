@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -155,6 +156,75 @@ namespace Authorization
                 passField.UseSystemPasswordChar = false;
                 passField.Text = "Enter your password";
                 passField.ForeColor = Color.Gray;
+            }
+        }
+
+        private void registerButton_Click(object sender, EventArgs e)
+        {
+            if (usernameField.Text == "Enter your name")
+            {
+                MessageBox.Show("Enter your name");
+                return;
+            }
+            if (userSurnameField.Text == "Enter your suname")
+            {
+                MessageBox.Show("Enter your surname");
+                return;
+            }
+            if (loginField.Text == "Enter your login")
+            {
+                MessageBox.Show("Enter your login");
+                return;
+            }
+            if (passField.Text == "Enter your password")
+            {
+                MessageBox.Show("Enter your password");
+                return;
+            }
+
+            if (isUserExists())
+            {
+                return;
+            }
+            
+            Database db = new Database();
+            MySqlCommand cmd = new MySqlCommand("INSERT INTO `users` (`id`, `login`, `pass`, `name`, `surname`) VALUES (NULL,@login, @pass, @name, @surname);", db.getConnection());
+            cmd.Parameters.Add("@login", MySqlDbType.VarChar).Value = loginField.Text;   
+            cmd.Parameters.Add("@pass", MySqlDbType.VarChar).Value = passField.Text;
+            cmd.Parameters.Add("@name", MySqlDbType.VarString).Value = usernameField.Text;
+            cmd.Parameters.Add("@surname", MySqlDbType.VarString).Value = userSurnameField.Text;
+
+            db.openConnect();
+            if (cmd.ExecuteNonQuery() == 1)
+            {
+                MessageBox.Show("Account has been created");
+            }else
+            {
+                MessageBox.Show("Account was not craeted");
+            }
+            db.closeConnect();
+
+        }
+        public bool isUserExists()
+        {
+            Database db = new Database();
+            DataTable table = new DataTable();
+            MySqlDataAdapter adapter = new MySqlDataAdapter();
+
+            MySqlCommand command = new MySqlCommand("SELECT * FROM `users`  WHERE `login` = @ul", db.getConnection());
+            command.Parameters.Add("@ul", MySqlDbType.VarChar).Value = loginField.Text;
+
+            adapter.SelectCommand = command;
+            adapter.Fill(table);
+
+            if (table.Rows.Count > 0)
+            {
+                MessageBox.Show("User login already exists");
+                return true;
+            }
+            else
+            {
+                return false;
             }
         }
     }

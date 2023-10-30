@@ -76,6 +76,7 @@
             this.registerButton.TabIndex = 5;
             this.registerButton.Text = "Sign in";
             this.registerButton.UseVisualStyleBackColor = true;
+            this.registerButton.Click += new System.EventHandler(this.registerButton_Click);
             // 
             // passField
             // 
